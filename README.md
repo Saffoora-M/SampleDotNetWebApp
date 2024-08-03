@@ -18,7 +18,7 @@ Following on from this, I created an app service from Azure Portal and deployed 
 
 ### Next steps
 
-My next aim is to automate the provisioning of the entire infrastructure in Azure through HashiCorp Terraform.
+My next target is to automate the provisioning of the entire infrastructure in Azure through HashiCorp Terraform.
 
 
 
