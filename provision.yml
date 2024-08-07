@@ -14,3 +14,10 @@ steps:
     terraform init
   displayName: 'Terraform Init'
   workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
+
+- script: |
+    terraform apply -auto-approve
+  displayName: 'Terraform Apply'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
+
+  

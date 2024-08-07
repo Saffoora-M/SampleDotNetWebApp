@@ -17,12 +17,12 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "learnRG" {
-  name     = "demo-rg"
+  name     = "terraform-rg"
   location = "East US"
 }
 
 resource "azurerm_container_registry" "learnACR" {
-  name                = "demomyACR2024"
+  name                = "terraformacr"
   resource_group_name = azurerm_resource_group.learnRG.name
   location            = azurerm_resource_group.learnRG.location
   sku                 = "Premium"
@@ -31,7 +31,7 @@ resource "azurerm_container_registry" "learnACR" {
 }
 
 resource "azurerm_service_plan" "learnASP" {
-  name                = "my-asp"
+  name                = "terraform-asp"
   location            = azurerm_resource_group.learnRG.location
   resource_group_name = azurerm_resource_group.learnRG.name
   os_type             = "Linux"
@@ -40,21 +40,21 @@ resource "azurerm_service_plan" "learnASP" {
 }
 
 resource "azurerm_linux_web_app" "learnAS" {
-  name                = "myappservicesn2024"
+  name                = "terraform-appservice"
   resource_group_name = azurerm_resource_group.learnRG.name
   location            = azurerm_resource_group.learnRG.location
   service_plan_id     = azurerm_service_plan.learnASP.id
-  app_settings = {
-    WEBSITES_PORT = 8080
-  }
-  
+ # app_settings = {
+  #  WEBSITES_PORT = 8080
+  #}
+
   
   site_config {
     application_stack {
-      docker_image_name        = "mydotnetproj:4"
-      docker_registry_password = azurerm_container_registry.learnACR.admin_password
-      docker_registry_url      = "https://${azurerm_container_registry.learnACR.login_server}"
-      docker_registry_username = azurerm_container_registry.learnACR.name
+   #   docker_image_name        = "mydotnetproj:4"
+    #  docker_registry_password = azurerm_container_registry.learnACR.admin_password
+     # docker_registry_url      = "https://${azurerm_container_registry.learnACR.login_server}"
+      #docker_registry_username = azurerm_container_registry.learnACR.name
 
     }
   }
