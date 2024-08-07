@@ -17,7 +17,7 @@ steps:
 
 
 - script: |
-    echo "Loggin into Azure portal now.."
+    echo "Logging into Azure portal now.."
     az login --service-principal --username $(uname) --password $(pwd) --tenant $(tenantId)
 
     echo "Selecting the subscription.."
@@ -26,7 +26,7 @@ steps:
     echo "showing the account details."
     sleep 10s
     az account show
-   # terraform apply -auto-approve
+    terraform apply -auto-approve
   displayName: 'Terraform Apply'
   workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
  
