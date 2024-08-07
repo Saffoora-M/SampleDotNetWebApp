@@ -17,9 +17,10 @@ steps:
 
 
 - script: |
-    az account show 
+    az login
     sleep 20s
-    terraform apply -auto-approve
+    az account show
+   # terraform apply -auto-approve
   displayName: 'Terraform Apply'
   workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
   env:
