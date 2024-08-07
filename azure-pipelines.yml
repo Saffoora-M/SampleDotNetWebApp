@@ -3,16 +3,14 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- none
+- main
 
 resources:
 - repo: self
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: 'c8c2d05f-191b-415c-826f-d73ecab0803d'
-  imageRepository: 'mydotnetproj'
-  containerRegistry: 'demomyacr2024.azurecr.io'
+  imageRepository: 'mytfproj'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
 
@@ -31,12 +29,11 @@ stages:
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
-        command: buildAndPush
-        repository: $(imageRepository)
-        dockerfile: $(dockerfilePath)
-        containerRegistry: $(dockerRegistryServiceConnection)
-        tags: |
-          $(tag)
+        containerRegistry: 'terraform-docker-sc'
+        repository: '$(imageRepository)'
+        command: 'buildAndPush'
+        Dockerfile: '**/Dockerfile'
+        tags: '$(tag)'
 
     
 - stage: Pull_and_Deploy
@@ -50,9 +47,11 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - task: AzureWebAppContainer@1
+      displayName: 'Azure Web App on Container Deploy'
       inputs:
-        azureSubscription: 'Azure subscription 1(34b2ce44-4ca5-4d8d-9367-7350b102b2eb)'
-        appName: 'myappservicesn2024'
-        containers: 'test images'
-        appSettings: '-Port 8080'
-    
+        azureSubscription: $(azureSubs)
+        appName: $(appName)
+        containers: $(containerRegistry)/$(imageRepository):$(tag)
+        appSettings: 'Port 8080'
+
+
