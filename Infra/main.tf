@@ -50,13 +50,13 @@ resource "azurerm_linux_web_app" "learnAS" {
 
   
   site_config {
-    application_stack {
+    #application_stack {
    #   docker_image_name        = "mydotnetproj:4"
     #  docker_registry_password = azurerm_container_registry.learnACR.admin_password
      # docker_registry_url      = "https://${azurerm_container_registry.learnACR.login_server}"
       #docker_registry_username = azurerm_container_registry.learnACR.name
 
     }
-  }
+  #}
 }
 
