@@ -48,6 +48,7 @@ resource "azurerm_linux_web_app" "learnAS" {
     WEBSITES_PORT = 8080
   }
   
+  
   site_config {
     application_stack {
       docker_image_name        = "mydotnetproj:4"
