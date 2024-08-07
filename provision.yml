@@ -16,6 +16,9 @@ steps:
   workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
 
 - script: |
+    az account show
+
+- script: |
     terraform apply -auto-approve
   displayName: 'Terraform Apply'
   workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
