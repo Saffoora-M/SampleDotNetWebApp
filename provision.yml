@@ -1,0 +1,16 @@
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- task: TerraformInstaller@1
+  inputs:
+    terraformVersion: 'latest'
+
+- script: |
+    terraform init
+  displayName: 'Terraform Init'
+  workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
