@@ -40,7 +40,7 @@ resource "azurerm_service_plan" "learnASP" {
 }
 
 resource "azurerm_linux_web_app" "learnAS" {
-  name                = "terraform-appservice"
+  name                = "terraform-appservice-2024"
   resource_group_name = azurerm_resource_group.learnRG.name
   location            = azurerm_resource_group.learnRG.location
   service_plan_id     = azurerm_service_plan.learnASP.id
