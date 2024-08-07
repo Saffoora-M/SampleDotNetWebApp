@@ -13,8 +13,8 @@
 *.userprefs
 
 
-[Ii]nfrastructure/
-!Infrastructure/main.tf
+Infra/*
+!Infra/main.tf
 
 # Build results
 [Dd]ebug/
