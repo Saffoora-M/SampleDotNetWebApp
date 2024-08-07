@@ -22,7 +22,7 @@ resource "azurerm_resource_group" "learnRG" {
 }
 
 resource "azurerm_container_registry" "learnACR" {
-  name                = "terraformacr"
+  name                = "terraformacr2024"
   resource_group_name = azurerm_resource_group.learnRG.name
   location            = azurerm_resource_group.learnRG.location
   sku                 = "Premium"

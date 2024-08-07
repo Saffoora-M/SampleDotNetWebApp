@@ -13,8 +13,8 @@
 *.userprefs
 
 
-Infra/*
-!Infra/main.tf
+Infra/.terraform/*
+#!Infra/main.tf
 
 # Build results
 [Dd]ebug/
