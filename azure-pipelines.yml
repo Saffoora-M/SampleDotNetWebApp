@@ -52,6 +52,6 @@ stages:
         azureSubscription: $(azureSubs)
         appName: $(appName)
         containers: $(containerRegistry)/$(imageRepository):$(tag)
-        appSettings: 'Port 8080'
+        appSettings: '-Port 8080'
 
 
