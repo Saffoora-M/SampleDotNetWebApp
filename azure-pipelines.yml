@@ -37,3 +37,22 @@ stages:
         containerRegistry: $(dockerRegistryServiceConnection)
         tags: |
           $(tag)
+
+    
+- stage: Pull_and_Deploy
+  dependsOn: Build
+  condition: succeeded()
+  displayName: Deploy to App Service
+  jobs:
+  - job: deployJob
+    displayName: Deploy Job
+    pool:
+      vmImage: $(vmImageName)
+    steps:
+    - task: AzureWebAppContainer@1
+      inputs:
+        azureSubscription: 'Azure subscription 1(34b2ce44-4ca5-4d8d-9367-7350b102b2eb)'
+        appName: 'myappservicesn2024'
+        containers: 'test images'
+        appSettings: '-Port 8080'
+    
