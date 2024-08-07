@@ -15,12 +15,17 @@ steps:
   displayName: 'Terraform Init'
   workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
 
-- script: |
-    az account show
 
 - script: |
+    az account show 
+    sleep 20s
     terraform apply -auto-approve
   displayName: 'Terraform Apply'
   workingDirectory: '$(System.DefaultWorkingDirectory)/Infra'
+  env:
+    ARM_CLIENT_ID: $(servicePrincipalId)
+    ARM_CLIENT_SECRET: $(servicePrincipalKey)
+    ARM_SUBSCRIPTION_ID: $(subscriptionId)
+    ARM_TENANT_ID: $(tenantId)
 
   
