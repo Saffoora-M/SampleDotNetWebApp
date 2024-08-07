@@ -49,9 +49,9 @@ stages:
     - task: AzureWebAppContainer@1
       displayName: 'Azure Web App on Container Deploy'
       inputs:
-        azureSubscription: $(azureSubs)
-        appName: $(appName)
-        containers: $(containerRegistry)/$(imageRepository):$(tag)
+        azureSubscription: 'Azure subscription 1(34b2ce44-4ca5-4d8d-9367-7350b102b2eb)'
+        appName: '$(appName)'
+        containers: '$(containerRegistry)/$(imageRepository):$(tag)'
         appSettings: '-Port 8080'
 
 
