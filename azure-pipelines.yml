@@ -53,8 +53,10 @@ stages:
         azureSubscription: 'app-service-sc'
         appName: '$(appName)'
         containers: '$(acrName).azurecr.io/$(imageRepository):$(tag)'
-        appSettings: |
-          '-Port 8181'
+        appSettings: '-Port 8181'
+        configurationStrings: |
+          '-linux_fx_version "DOCKER|terraformacr2024.azurecr.io/:$(tag)"'
+    
      
         
 
