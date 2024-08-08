@@ -10,7 +10,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  acrName: 'terraformacr2024'
+  acrName: 'terraformacr2024.azurecr.io'
   imageRepository: 'mytfproj'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
