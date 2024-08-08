@@ -3,7 +3,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- main
+- none
 
 resources:
 - repo: self
@@ -54,8 +54,8 @@ stages:
         appName: '$(appName)'
         containers: '$(acrName).azurecr.io/$(imageRepository):$(tag)'
         appSettings: '-Port 8181'
-        configurationStrings: |
-          '-linux_fx_version "DOCKER|terraformacr2024.azurecr.io/$(imageRepository):$(tag)"'
+       # configurationStrings: |
+        #  '-linux_fx_version "DOCKER|terraformacr2024.azurecr.io/$(imageRepository):$(tag)"'
     
      
         
