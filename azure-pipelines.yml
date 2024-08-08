@@ -52,11 +52,11 @@ stages:
         azureSubscription: 'app-service-sc'
         appName: '$(appName)'
         containers: '$(containerRegistry)/$(imageRepository):$(tag)'
-        appSettings: '-WEBSITES_PORT 8181'
-        configurationStrings: |
+        appSettings: |
           '-DOCKER_REGISTRY_SERVER_USERNAME:terraformacr2024  
           -DOCKER_REGISTRY_SERVER_URL: https://terraformacr2024.azurecr.io
-          -DOCKER_REGISTRY_SERVER_PASSWORD: $(pwd)'
-
+          -DOCKER_REGISTRY_SERVER_PASSWORD: $(pwd)
+          -WEBSITES_PORT 8181'
+      
 
 
