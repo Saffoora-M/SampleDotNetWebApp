@@ -49,7 +49,7 @@ stages:
     - task: AzureWebAppContainer@1
       displayName: 'Azure Web App on Container Deploy'
       inputs:
-        azureSubscription: 'terraform-docker-sc'
+        azureSubscription: 'app-service-sc'
         appName: '$(appName)'
         containers: '$(containerRegistry)/$(imageRepository):$(tag)'
         appSettings: '-WEBSITES_PORT 8181'
