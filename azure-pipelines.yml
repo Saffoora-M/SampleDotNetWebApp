@@ -55,7 +55,7 @@ stages:
         containers: '$(acrName).azurecr.io/$(imageRepository):$(tag)'
         appSettings: '-Port 8181'
         configurationStrings: |
-          '-linux_fx_version "DOCKER|terraformacr2024.azurecr.io/:$(tag)"'
+          '-linux_fx_version "DOCKER|terraformacr2024.azurecr.io/$(imageRepository):$(tag)"'
     
      
         
