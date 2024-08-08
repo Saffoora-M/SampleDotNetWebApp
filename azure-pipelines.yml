@@ -53,11 +53,9 @@ stages:
         azureSubscription: 'app-service-sc'
         appName: '$(appName)'
         containers: '$(acrName).azurecr.io/$(imageRepository):$(tag)'
-        appSettings: '-WEBSITES_PORT 8181'
-        configurationStrings:  |
-          '-DOCKER_REGISTRY_SERVER_PASSWORD $(pwd)
-           -DOCKER_REGISTRY_SERVER_URL https://$(acrName).azurecr.io
-           -DOCKER_REGISTRY_SERVER_USERNAME $(acrName)'
+        appSettings: |
+          '-Port 8181'
+     
         
 
 
