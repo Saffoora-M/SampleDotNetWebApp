@@ -10,7 +10,7 @@ resources:
 
 variables:
   # Container registry service connection established during pipeline creation
-  acrName: 'terraformacr2024.azurecr.io'
+  acrName: 'terraformacr2024'
   imageRepository: 'mytfproj'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: '$(Build.BuildId)'
@@ -52,8 +52,12 @@ stages:
       inputs:
         azureSubscription: 'app-service-sc'
         appName: '$(appName)'
-        containers: '$(acrName)/$(imageRepository):$(tag)'
+        containers: '$(acrName).azurecr.io/$(imageRepository):$(tag)'
         appSettings: '-WEBSITES_PORT 8181'
+        configurationStrings:  |
+          '-DOCKER_REGISTRY_SERVER_PASSWORD $(pwd)
+           -DOCKER_REGISTRY_SERVER_URL https://$(acrName).azurecr.io
+           -DOCKER_REGISTRY_SERVER_USERNAME $(acrName)'
         
 
 
