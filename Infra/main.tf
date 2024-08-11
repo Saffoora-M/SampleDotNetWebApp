@@ -46,14 +46,14 @@ resource "azurerm_linux_web_app" "learnAS" {
   service_plan_id     = azurerm_service_plan.learnASP.id
   
    site_config {
-   # linux_fx_version = "DOCKER|https://${azurerm_container_registry.learnACR.login_server}/mytfproj:26"
+   #linux_fx_version = "DOCKER|https://${azurerm_container_registry.learnACR.login_server}/myApp:latest"
   
  
   application_stack {
-   #   docker_image_name        = "mydotnetproj:4"
+      docker_image_name        = "mytfproj:latest"
       docker_registry_password = azurerm_container_registry.learnACR.admin_password
       docker_registry_url      = "https://${azurerm_container_registry.learnACR.login_server}"
-docker_registry_username = azurerm_container_registry.learnACR.name
+      docker_registry_username = azurerm_container_registry.learnACR.name
 
    }
 }
