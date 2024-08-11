@@ -14,6 +14,8 @@
 
 
 Infra/.terraform/*
+Infra/terraform.*
+Infra/.terraform.lock.hcl
 #!Infra/main.tf
 
 # Build results
